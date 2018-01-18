@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<header class="jumbotron">
+		  <h2 class="display-4"><i class="fa fa-pagelines" aria-hidden="true"></i>  Welcome to Exotic Fruits</h2>
+		  <p class="lead">View exotic fruit, roots and vegetables from all over the world.</p>
+		  <hr class="my-4">
+		  
+		  <%# if (currentUser) { %>
+			  <p class="lead">
+			    <a class="btn btn-default" href="/index/new">Add a new fruit</a>
+			  </p>
+			<%# }%>
+	</header>
+</div>
+
+<!-- By restricting columns (4 per page), organizing pictures in a grid. -->
+
+<div class="container">
+	<div class="row text-center" style="display: flex; flex-flow: wrap;">
+
+		<% fruits.forEach(function(fruit) { %>
+
+			<div class="col-md-3 col-sm-6">
+				<div class="thumbnail">
+
+					<a href="/index/<%= fruit._id %>">
+		
+						<div>
+							<img  class="image" src="<%= fruit.image%>" >
+						</div>
+					
+						<div class="caption">
+							<h4><%= fruit.name%></h4>
+						</div>
+					</a>
+
+				</div>
+			</div>
+		<% }) %>
+
+	</div>
+</div>
+
+<% include ../partials/footer %>

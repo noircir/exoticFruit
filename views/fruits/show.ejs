@@ -1,0 +1,117 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">Fruit Details</p>
+			<div class="list-group">
+				<li class="list-group-item active">Info 1</li>
+				<li class="list-group-item">Info 2</li>
+				<li class="list-group-item">Info 3</li>
+			</div>
+			<!-- MAP should go here -->
+			<div id="map"></div>
+		</div>
+
+		<div class="col-md-9">
+			<div class="thumbnail">
+				<img class="img-responsive" src="<%= fruit.image%>" >
+				
+				<div class="caption-full">
+
+					<h4 class="pull-right">$<%= fruit.price %>/kg</h4>
+					<h2><%=fruit.name %></h2>
+					<p><%= fruit.description%></p>
+					<div><em>Submitted by <strong><%= fruit.author.username %></strong></em></div>
+
+					 <% if (currentUser && fruit.author.id.equals(currentUser._id))  { %>
+
+						<!-- Edit fruit button (will lead to the edit page)-->
+	                    <a class="btn btn-xs btn-warning" href="/index/<%= fruit._id %>/edit">Edit</a>
+
+                    	<!-- Delete fruit form -->
+                        <form id="delete-form" action="/index/<%= fruit._id %>?_method=DELETE" method="POST" onclick="return confirm('Do you really want to delete this fruit?');return false;">
+
+                            <button class="btn btn-xs btn-danger">Delete</button>
+
+                        </form>
+
+                     <% } %>
+
+				</div>
+			</div>
+
+			<div class="well">
+				<div class="text-right">
+					<a class="btn btn-xs btn-warning" href="/index/<%= fruit._id%>/comments/new" class="btn btn-sm">Add comment</a>
+				</div>
+
+				<hr>
+
+				<% fruit.comments.forEach(function(comment) { %>
+					<div class="row">
+						<div class="col-md-12">
+							<span class="pull-right">10 days ago</span>
+							<p><strong><%= comment.author.username %></strong></p>
+							<p><%= comment.text %></p>
+
+							<% if (currentUser && comment.author.id.equals(currentUser._id))  { %>
+
+                                <a class="btn btn-xs btn-warning" href="/index/<%= fruit._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                                <form id="delete-form" action="/index/<%=fruit._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                </form>
+                    
+                            <% } %>
+
+						</div>
+
+					</div>
+				<% }); %>
+
+			</div>
+
+			<div class="container">
+				<div class="btn btn-default btn-xs">
+					<a href="/index/">Go back</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+<script>
+  function initMap() {
+    var lat = <%= fruit.lat %>;
+    var lng = <%= fruit.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= fruit.name %><br />
+      <%= fruit.location %></strong>
+      <p><%= fruit.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4eX0oh9RGBV8E9GPkcdBwpP7B972wvwY&callback=initMap"></script>
+
+
+
+<% include ../partials/footer %>

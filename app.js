@@ -70,11 +70,11 @@ app.use("/index/:id/comments", commentRoutes);
 app.use(authRoutes);
 
 
-// The fall-through route (404 Not Found)
-// app.use(function(req, res){
-// //     res.sendStatus(404); 
-//     res.send(404).send({ error: "boo:((" });
-// });
+//The fall-through route (404 Not Found)
+app.use(function(req, res){
+    res.sendStatus(404); 
+    // res.send(404).send({ error: "boo:((" });
+});
 
 
 app.listen(port, IP, function() {

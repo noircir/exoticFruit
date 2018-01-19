@@ -19,9 +19,9 @@
 				
 				<div class="caption-full">
 
-					<h4 class="pull-right">$<%= fruit.price %>/kg</h4>
-					<h2><%=fruit.name %></h2>
-					<p><%= fruit.description%></p>
+					<h4 class="pull-right display-text">$<%= fruit.price.substring(0, 7) %>/kg</h4>
+					<h2 class="display-text"><%=fruit.name %></h2>
+					<p class="display-text"><%= fruit.description%></p>
 					<div><em>Submitted by <strong><%= fruit.author.username %></strong></em></div>
 
 					 <% if (currentUser && fruit.author.id.equals(currentUser._id))  { %>
@@ -52,8 +52,8 @@
 					<div class="row">
 						<div class="col-md-12">
 							<span class="pull-right">10 days ago</span>
-							<p><strong><%= comment.author.username %></strong></p>
-							<p><%= comment.text %></p>
+							<p class="display-text"><strong><%= comment.author.username %></strong></p>
+							<p class="display-text"><%= comment.text %></p>
 
 							<% if (currentUser && comment.author.id.equals(currentUser._id))  { %>
 

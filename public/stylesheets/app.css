@@ -27,3 +27,7 @@
     height: 400px;
     width: 100%;
 }
+
+.display-text {
+   word-wrap: break-word;
+}

@@ -14,7 +14,7 @@ var express 		= require("express"),
 	User 			= require("./models/user");
 
 var IP = 'localhost',
-	port = 8020;
+	port = 8002;
 
 var fruitRoutes 	= require("./routes/fruits"),
 	commentRoutes 	= require("./routes/comments"),

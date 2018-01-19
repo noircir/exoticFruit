@@ -80,3 +80,4 @@ app.use(authRoutes);
 app.listen(port, IP, function() {
 	console.log("Magic happens on port " + port + " ...");
 });
+

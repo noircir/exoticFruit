@@ -44,22 +44,22 @@ body {
 }
 
 .slideshow li:nth-child(1) { 
-  background-image: url(http://bit.ly/2rfjMhQ) 
+  background-image: url(https://source.unsplash.com/EzH46XCDQRY) 
 }
 .slideshow li:nth-child(2) { 
-  background-image: url(http://bit.ly/2DMPIg7);
+  background-image: url(https://source.unsplash.com/UHQ3jAtVeNw);
   animation-delay: 10s; 
 }
 .slideshow li:nth-child(3) { 
-  background-image: url(http://bit.ly/2mQvpqW);
+  background-image: url(https://source.unsplash.com/jiumC_SqOrk);
   animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
-  background-image: url(http://bit.ly/2Bc0ERx);
+  background-image: url(https://source.unsplash.com/zOlQ7lF-3vs);
   animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url(http://bit.ly/2rkd4qY);
+  background-image: url(https://source.unsplash.com/yGXClExAuoE);
   animation-delay: 40s; 
 }
 
